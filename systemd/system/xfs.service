@@ -1,0 +1,37 @@
+[Unit]
+Description=X Font Server
+BindsTo=xfs-internal.socket
+After=xfs-internal.socket
+
+[Service]
+CapabilityBoundingSet=
+DynamicUser=yes
+LockPersonality=yes
+IPAddressDeny=any
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateNetwork=yes
+PrivateUsers=yes
+ProcSubset=pid
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=full
+RestrictAddressFamilies=none
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+TemporaryFileSystem=/run
+UMask=077
+Restart=on-failure
+StandardInput=socket
+ExecStart=/usr/local/bin/xfs -inetd
+ExecReload=kill -USR1 $MAINPID

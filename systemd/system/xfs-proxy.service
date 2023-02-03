@@ -1,0 +1,7 @@
+[Unit]
+Description=X Font Service multisocket proxy
+BindsTo=xfs.socket xfs-internal.socket
+After=xfs.socket xfs-internal.socket
+
+[Service]
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd /run/xfs.sock

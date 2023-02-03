@@ -1,0 +1,9 @@
+[Unit]
+Description=X Font Service (internal)
+
+[Socket]
+ListenStream=/run/xfs.sock
+Service=xfs.service
+
+[Install]
+WantedBy=sockets.target

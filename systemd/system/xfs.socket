@@ -1,0 +1,11 @@
+[Unit]
+Description=X Font Service
+
+[Socket]
+Service=xfs-proxy.service
+ListenStream=7100
+ListenStream=/tmp/.font-unix/fs7100
+ListenStream=@/tmp/.font-unix/fs7100
+
+[Install]
+WantedBy=sockets.target
