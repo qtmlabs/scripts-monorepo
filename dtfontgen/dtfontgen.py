@@ -94,7 +94,6 @@ def dt2google(name, orig):
             return None
         if vals[4] != 'normal':
             return None
-        vals[3] = 'r'
         vals[5] = ''
     elif 'jis' in codec or 'ksc' in codec or 'gb' in codec:
         if vals[10] == 'm':
