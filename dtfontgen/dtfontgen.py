@@ -60,18 +60,6 @@ def dt2google(name, orig):
         else:
             return None
         vals[5] = ''
-    elif codec in ROBOTO_CODECS and 'sans' in vals[5]:
-        vals[1] = 'roboto'
-        if vals[2] == 'bold':
-            vals[2] = '700'
-        elif vals[2] == 'medium':
-            vals[2] = '400'
-        else:
-            return None
-        if vals[4] != 'normal':
-            return None
-        vals[4] = '100'
-        vals[5] = ''
     elif 'serif' in vals[5] and codec in ROBOTO_SERIF_CODECS:
         vals[1] = 'roboto serif 20pt'
         if vals[2] == 'bold':
@@ -84,7 +72,7 @@ def dt2google(name, orig):
             return None
         vals[4] = '100'
         vals[5] = '[]'
-    elif codec in ROBOTO_CODECS and 'serif' in vals[5]:
+    elif 'serif' in vals[5] and vals[3] == 'r' and codec in ROBOTO_CODECS:
         vals[1] = 'roboto slab'
         if vals[2] == 'bold':
             vals[2] = '700'
@@ -94,6 +82,18 @@ def dt2google(name, orig):
             return None
         if vals[4] != 'normal':
             return None
+        vals[5] = ''
+    elif codec in ROBOTO_CODECS:
+        vals[1] = 'roboto'
+        if vals[2] == 'bold':
+            vals[2] = '700'
+        elif vals[2] == 'medium':
+            vals[2] = '400'
+        else:
+            return None
+        if vals[4] != 'normal':
+            return None
+        vals[4] = '100'
         vals[5] = ''
     elif 'jis' in codec or 'ksc' in codec or 'gb' in codec:
         if vals[10] == 'm':
