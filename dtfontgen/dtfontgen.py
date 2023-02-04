@@ -102,12 +102,16 @@ def dt2google(name, orig):
             vals[0], vals[1] = 'adobe', 'noto sans cjk '
         elif 'serif' in vals[5]:
             vals[0], vals[1] = 'google', 'noto serif cjk '
+        else:
+            return None
         if 'jis' in codec:
             lg = 'jp'
         elif 'ksc' in codec:
             lg = 'kr'
         elif 'gb' in codec:
             lg = 'sc'
+        else:
+            return None
         vals[1] += lg
         if vals[2] == 'bold':
             vals[2] = '700'
