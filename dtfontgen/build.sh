@@ -1,22 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if ! command -v python3 >/dev/null; then
-        echo "python3 required"
-        exit 1
-fi
+source ../common/afdko.bash
 
 if ! command -v mkfontscale >/dev/null; then
         echo "mkfontscale required"
         exit 1
-fi
-
-if ! [ -f afdko/installed ]; then
-        echo "Installing AFDKO..."
-        rm -rf afdko
-        python3 -m venv afdko
-        afdko/bin/pip install afdko
-        touch afdko/installed
 fi
 
 rm -rf fonts
@@ -37,4 +26,4 @@ else
 fi
 
 echo "Creating TTC..."
-afdko/bin/otf2otc -o dtfonts.ttc downloads/*
+"$afdko"/bin/otf2otc -o dtfonts.ttc downloads/*

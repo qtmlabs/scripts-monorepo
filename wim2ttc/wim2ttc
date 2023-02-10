@@ -6,18 +6,7 @@ if [ $# -ne 2 ]; then
         exit 1
 fi
 
-if ! command -v python3 >/dev/null; then
-        echo "python3 required"
-        exit 1
-fi
-
-if ! [ -f afdko/installed ]; then
-        echo "Installing AFDKO..."
-        rm -rf afdko
-        python3 -m venv afdko
-        afdko/bin/pip install afdko
-        touch afdko/installed
-fi
+source ../common/afdko.bash
 
 wim_file="$1"
 wim_index="$2"
@@ -27,6 +16,6 @@ umount mnt >/dev/null 2>&1 || true
 
 wimmount "$wim_file" "$wim_index" mnt
 
-afdko/bin/otf2otc -o windowsfonts.ttc mnt/Windows/Fonts/*.?t?
+"$afdko"/bin/otf2otc -o windowsfonts.ttc mnt/Windows/Fonts/*.?t?
 
 umount mnt
