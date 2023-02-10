@@ -5,7 +5,7 @@ source ../common/afdko.bash
 
 rm -rf fonts
 
-if ! (cd downloads && sha256sum --check ../sha256sums.txt); then
+if ! (cd downloads && sha256sum --check ../sha256sums.txt) >/dev/null 2>&1; then
         mkdir -p downloads
         cd downloads
 
