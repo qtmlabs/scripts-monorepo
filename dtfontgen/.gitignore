@@ -1,2 +1,6 @@
 __pycache__
 *.alias
+*.ttc
+/fonts
+/downloads
+/afdko
