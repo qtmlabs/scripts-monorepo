@@ -15,16 +15,21 @@ if ! [ -f afdko/installed ]; then
 fi
 
 rm -rf fonts
-mkdir -p downloads
-cd downloads
 
-echo "Downloading files..."
-wget -ci ../urls.txt
+if ! (cd downloads && sha256sum --check ../sha256sums.txt); then
+        mkdir -p downloads
+        cd downloads
 
-echo "Validating checksums..."
-sha256sum --check ../sha256sums.txt
+        echo "Downloading files..."
+        wget -ci ../urls.txt
 
-cd ..
+        echo "Validating checksums..."
+        sha256sum --check ../sha256sums.txt
+
+        cd ..
+else
+        echo "Already downloaded"
+fi
 
 echo "Unpacking files..."
 cabextract -L -d fonts downloads/*
