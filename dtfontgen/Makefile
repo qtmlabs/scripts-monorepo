@@ -4,27 +4,30 @@ endif
 
 .PHONY: all clean
 
-all: package
+all: dist
 
-mk_fonts_alias: $(CDE_SOURCE_TREE)/programs/fontaliases/mk_fonts_alias.c
+build:
+	mkdir $@
+
+build/mk_fonts_alias: $(CDE_SOURCE_TREE)/programs/fontaliases/mk_fonts_alias.c build
 	gcc -o $@ $<
 
-mixed.alias: mk_fonts_alias
+build/mixed.alias: build/mk_fonts_alias build
 	./$< 1 > $@
 
-google.alias: mixed.alias
+build/google.alias: build/mixed.alias build
 	python3 dtfontgen.py $< > $@
 
 dtfonts.ttc:
 	./build.sh
 
-package: google.alias dtfonts.ttc
+dist: build/google.alias dtfonts.ttc
 	rm -rf $@
 	mkdir $@
-	cp google.alias $@/fonts.alias
+	cp build/google.alias $@/fonts.alias
 	cp dtfonts.ttc $@
 	mkfontscale $@
 	mkfontdir $@
 
 clean:
-	rm -rf package mixed.alias google.alias mk_fonts_alias
+	rm -rf dist build

@@ -1,7 +1,6 @@
 __pycache__
-*.alias
 *.ttc
 /fonts
 /downloads
-/package
-/mk_fonts_alias
+/dist
+/build
