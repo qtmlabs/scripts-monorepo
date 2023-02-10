@@ -4,30 +4,40 @@ endif
 
 .PHONY: all clean
 
-all: dist
+dir_guard = @mkdir -p $(@D)
 
-build:
-	mkdir $@
+all: dist/fonts.dir dist/fonts.alias
 
-build/mk_fonts_alias: $(CDE_SOURCE_TREE)/programs/fontaliases/mk_fonts_alias.c build
+build/mk_fonts_alias: $(CDE_SOURCE_TREE)/programs/fontaliases/mk_fonts_alias.c
+	$(dir_guard)
 	gcc -o $@ $<
 
-build/mixed.alias: build/mk_fonts_alias build
+build/mixed.alias: build/mk_fonts_alias
 	./$< 1 > $@
 
-build/google.alias: build/mixed.alias build
+build/google.alias: build/mixed.alias
 	python3 dtfontgen.py $< > $@
 
 dtfonts.ttc:
 	./build.sh
 
-dist: build/google.alias dtfonts.ttc
-	rm -rf $@
-	mkdir $@
-	cp build/google.alias $@/fonts.alias
-	cp dtfonts.ttc $@
-	mkfontscale $@
-	mkfontdir $@
+dist/fonts.alias: build/google.alias
+	$(dir_guard)
+	cp -T $< $@
+
+dist/dtinfo.bdf: $(CDE_SOURCE_TREE)/programs/fontaliases/dtinfo.bdf
+	$(dir_guard)
+	cp -T $< $@
+
+dist/dtfonts.ttc: dtfonts.ttc
+	$(dir_guard)
+	cp -T $< $@
+
+dist/fonts.scale: dist/dtfonts.ttc
+	mkfontscale dist
+
+dist/fonts.dir: dist/fonts.scale dist/dtinfo.bdf
+	mkfontdir dist
 
 clean:
 	rm -rf dist build
