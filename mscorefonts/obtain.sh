@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source ../common/afdko.bash
+source ../common/python.bash
 source ../common/download.bash
 
 rm -rf fonts
@@ -15,4 +15,4 @@ echo "Cleaning files..."
 find fonts -type f \! -name \*.ttf -delete
 
 echo "Creating TTC..."
-"$afdko"/bin/otf2otc -o mscorefonts.ttc fonts/*
+"$python" ../common/otf2otc.py -o mscorefonts.ttc fonts/*

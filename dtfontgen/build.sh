@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source ../common/afdko.bash
+source ../common/python.bash
 source ../common/download.bash
 
 if ! command -v mkfontscale >/dev/null; then
@@ -14,4 +14,4 @@ download
 rm -rf fonts
 
 echo "Creating TTC..."
-"$afdko"/bin/otf2otc -o dtfonts.ttc downloads/*
+"$python" ../common/otf2otc.py -o dtfonts.ttc downloads/*
