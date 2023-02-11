@@ -31,6 +31,7 @@ SystemCallFilter=@system-service
 SystemCallFilter=~@resources @privileged
 TemporaryFileSystem=/run
 UMask=077
+BindReadOnlyPaths=/dev/log /run/systemd/journal/socket /run/systemd/journal/stdout
 Restart=on-failure
 StandardInput=socket
 ExecStart=/usr/local/bin/xfs -inetd
