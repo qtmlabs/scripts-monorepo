@@ -10,3 +10,8 @@ if ! command -v mkfontscale >/dev/null; then
 fi
 
 download
+
+rm -rf fonts
+
+echo "Creating TTC..."
+"$python" ../common/otf2otc.py -o dtfonts.ttc downloads/*
