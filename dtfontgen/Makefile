@@ -15,10 +15,10 @@ build/mk_fonts_alias: $(CDE_SOURCE_TREE)/programs/fontaliases/mk_fonts_alias.c
 build/mixed.alias: build/mk_fonts_alias
 	./$< 1 > $@
 
-build/google.alias: build/mixed.alias
+build/google.alias: build/mixed.alias dtfontgen.py
 	python3 dtfontgen.py $< > $@
 
-dtfonts.ttc:
+dtfonts.ttc: build.sh urls.txt sha256sums.txt
 	./build.sh
 
 dist/fonts.alias: build/google.alias
