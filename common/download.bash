@@ -13,4 +13,5 @@ function download {
         else
                 echo "Already downloaded"
         fi
+        touch downloads/*
 }
