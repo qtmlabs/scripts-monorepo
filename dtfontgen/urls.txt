@@ -1,10 +1,6 @@
 https://github.com/googlefonts/noto-cjk/raw/a99a4354c68964f6bfac488d01010b1fb6d9178a/Sans/Variable/OTC/NotoSansCJK-VF.otf.ttc
 https://github.com/googlefonts/noto-cjk/raw/a99a4354c68964f6bfac488d01010b1fb6d9178a/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc
-https://github.com/googlefonts/noto-cjk/raw/a99a4354c68964f6bfac488d01010b1fb6d9178a/Serif/Variable/OTC/NotoSerifCJK-VF.otf.ttc
 https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/apache/roboto/Roboto%5Bwdth%2Cwght%5D.ttf
 https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/apache/roboto/Roboto-Italic%5Bwdth%2Cwght%5D.ttf
 https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/apache/robotomono/RobotoMono%5Bwght%5D.ttf
 https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/apache/robotomono/RobotoMono-Italic%5Bwght%5D.ttf
-https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/apache/robotoslab/RobotoSlab%5Bwght%5D.ttf
-https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/ofl/robotoserif/RobotoSerif%5BGRAD%2Copsz%2Cwdth%2Cwght%5D.ttf
-https://github.com/google/fonts/raw/be43afca9ca6064c503add345e0ec23833a5811b/ofl/robotoserif/RobotoSerif-Italic%5BGRAD%2Copsz%2Cwdth%2Cwght%5D.ttf

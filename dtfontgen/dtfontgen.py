@@ -21,18 +21,6 @@ ROBOTO_CODECS = {
     'iso10646-1',
 }
 
-ROBOTO_SERIF_CODECS = {
-    'iso8859-1',
-    'iso8859-2',
-    'iso8859-3',
-    'iso8859-4',
-    'iso8859-9',
-    'iso8859-10',
-    'iso8859-13',
-    'iso8859-15',
-    'iso10646-1',
-}
-
 
 def dt2google(name, orig):
     vals = name[1:].split('-')
@@ -48,7 +36,7 @@ def dt2google(name, orig):
     if vals[0] != 'dt':
         return None
 
-    if codec in ROBOTO_CODECS or codec in ROBOTO_SERIF_CODECS:
+    if codec in ROBOTO_CODECS:
         vals[0] = 'google'
 
     if vals[10] == 'm' and codec in ROBOTO_CODECS:
@@ -58,29 +46,6 @@ def dt2google(name, orig):
         elif vals[2] == 'medium':
             vals[2] = '400'
         else:
-            return None
-        vals[5] = ''
-    elif 'serif' in vals[5] and codec in ROBOTO_SERIF_CODECS:
-        vals[1] = 'roboto serif 20pt'
-        if vals[2] == 'bold':
-            vals[2] = '700'
-        elif vals[2] == 'medium':
-            vals[2] = '400'
-        else:
-            return None
-        if vals[4] != 'normal':
-            return None
-        vals[4] = '100'
-        vals[5] = '[]'
-    elif 'serif' in vals[5] and vals[3] == 'r' and codec in ROBOTO_CODECS:
-        vals[1] = 'roboto slab'
-        if vals[2] == 'bold':
-            vals[2] = '700'
-        elif vals[2] == 'medium':
-            vals[2] = '400'
-        else:
-            return None
-        if vals[4] != 'normal':
             return None
         vals[5] = ''
     elif codec in ROBOTO_CODECS:
@@ -98,10 +63,8 @@ def dt2google(name, orig):
     elif 'jis' in codec or 'ksc' in codec or 'gb' in codec:
         if vals[10] == 'm':
             vals[0], vals[1] = 'google', 'noto sans mono cjk '
-        elif 'sans' in vals[5]:
+        elif 'sans' in vals[5] or 'serif' in vals[5]:
             vals[0], vals[1] = 'adobe', 'noto sans cjk '
-        elif 'serif' in vals[5]:
-            vals[0], vals[1] = 'google', 'noto serif cjk '
         else:
             return None
         if 'jis' in codec:
