@@ -7,10 +7,9 @@ endif
 FONTS = \
 	NotoSansCJK-VF.otf.ttc \
 	NotoSansMonoCJK-VF.otf.ttc \
-	Roboto-Italic[wdth,wght].ttf \
 	RobotoMono-Italic[wght].ttf \
 	RobotoMono[wght].ttf \
-	Roboto[wdth,wght].ttf
+	Roboto[ital,wdth,wght].ttf
 
 dir_guard = @mkdir -p $(@D)
 
