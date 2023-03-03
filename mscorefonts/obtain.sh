@@ -14,5 +14,5 @@ cabextract -L -d fonts downloads/*
 echo "Cleaning files..."
 find fonts -type f \! -name \*.ttf -delete
 
-echo "Creating TTC..."
-"$python" ../common/otf2otc.py -o mscorefonts.ttc fonts/*
+mkfontscale fonts
+mkfontdir fonts
