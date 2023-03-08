@@ -1,0 +1,18 @@
+# Binaries
+httpdirfs
+
+# Intermediates
+*.o
+.depend
+
+# Documentation
+doc/html
+
+# Editor related
+*.kate-swp
+.vscode
+*.c~
+*.h~
+
+#Others
+mnt
