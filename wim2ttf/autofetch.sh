@@ -8,8 +8,9 @@ umount -l download/mnt || true
 
 mkdir -p download/iso
 mkdir -p download/mnt
+mkdir -p download/cache
 
-../common/httpdirfs --cache --single-file-mode "$url" download/iso
+../common/httpdirfs --cache --cache-location "$(realpath download/cache)" --dl-seg-size 1 --max-seg-count $((1024 * 1024)) --single-file-mode "$url" download/iso
 ../common/lklfuse -o type=udf,ro download/iso/* download/mnt
 
 echo "Extracting fonts from Windows 11 ISO over network..."
