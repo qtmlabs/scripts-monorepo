@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+src="$(dirname "$(realpath "$0")")/../third_party/httpdirfs"
+
+make -C "$src" httpdirfs -j $(nproc)
+
+exec "$src/httpdirfs" "$@"

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+rev=36080fc6654385958388cdd16fcf80581e92bb7b
+dir="$(dirname "$(realpath "$0")")/downloads/lklfuse/$rev/$(uname -m)"
+
+mkdir -p "$dir"
+
+if ! [ -f "$dir/.ok" ]; then
+        echo "Downloading lklfuse..."
+        (cd "$dir" && wget -c "https://github.com/qtmlabs/resources/raw/$rev/bin/$(uname -m)/lklfuse" && chmod a+x "$dir/lklfuse" && touch "$dir/.ok")
+fi
+
+exec "$dir/lklfuse" "$@"
